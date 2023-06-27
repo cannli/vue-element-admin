@@ -87,7 +87,7 @@ export default {
       const _self = this
       const _URL = window.URL || window.webkitURL
       const fileName = file.uid
-      this.listObj[fileName] = {}
+      _self.listObj[fileName] = {}
       return new Promise((resolve, reject) => {
         const img = new Image()
         img.src = _URL.createObjectURL(file)

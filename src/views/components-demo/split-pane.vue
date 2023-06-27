@@ -5,9 +5,9 @@
       <a href="https://jsfiddle.net/" target="_blank"> jsfiddle </a>will not be unfamiliar.
       <a href="https://github.com/PanJiaChen/vue-split-pane" target="_blank"> Github repository</a>
     </aside>
-    <split-pane split="vertical" @resize="resize">
+    <split-pane split="vertical" :max-percent="50" :default-percent="10" @resize="resize">
       <template slot="paneL">
-        <div class="left-container" />
+        <div ref="stepBoxStyle" class="left-container" />
       </template>
       <template slot="paneR">
         <split-pane split="horizontal">
@@ -29,9 +29,29 @@ import splitPane from 'vue-splitpane'
 export default {
   name: 'SplitpaneDemo',
   components: { splitPane },
+  data() {
+    return {
+      minPercent: 20, // 往右拖动最小为15，往左最小为
+      stepBoxWidth: null
+    }
+  },
+  mounted() {
+    // 记录左侧宽度
+    this.stepBoxWidth = this.$refs.stepBoxStyle.clientWidth
+  },
   methods: {
     resize() {
-      console.log('resize')
+      this.$nextTick(() => {
+        const newWidth = JSON.parse(JSON.stringify(this.$refs.stepBoxStyle.clientWidth))
+        if (newWidth < this.stepBoxWidth) {
+          this.minPercent = 20
+        } else if (newWidth > this.stepBoxWidth) {
+          this.minPercent = 30
+        }
+        console.log(newWidth, 'newWidth')
+        console.log(this.minPercent, 'minPercent')
+        this.stepBoxWidth = JSON.parse(JSON.stringify(newWidth))
+      })
     }
   }
 }

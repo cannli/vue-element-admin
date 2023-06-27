@@ -9,7 +9,8 @@
 
 <script>
 import UploadExcelComponent from '@/components/UploadExcel/index.vue'
-
+// import dataA from '../../../zhangdan'
+import fs from 'fs'
 export default {
   name: 'UploadExcel',
   components: { UploadExcelComponent },
@@ -18,6 +19,10 @@ export default {
       tableData: [],
       tableHeader: []
     }
+  },
+  created() {
+    const data = fs.readFileSync('../../../zhangdan')
+    console.log(data.toString(), 66666)
   },
   methods: {
     beforeUpload(file) {

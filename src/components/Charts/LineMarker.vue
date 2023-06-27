@@ -65,6 +65,7 @@ export default {
             }
           }
         },
+        // item的标题
         legend: {
           top: 20,
           icon: 'rect',
@@ -72,7 +73,7 @@ export default {
           itemHeight: 5,
           itemGap: 13,
           data: ['CMCC', 'CTCC', 'CUCC'],
-          right: '4%',
+          // right: '4%',
           textStyle: {
             fontSize: 12,
             color: '#F1F1F3'
@@ -90,7 +91,7 @@ export default {
           boundaryGap: false,
           axisLine: {
             lineStyle: {
-              color: '#57617B'
+              color: '#ffffff'
             }
           },
           data: ['13:00', '13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
@@ -103,25 +104,30 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#57617B'
+              color: '#ffffff'
             }
           },
+          // 轴 text 样式 配置
           axisLabel: {
             margin: 10,
             textStyle: {
               fontSize: 14
             }
           },
+          // 画布中线的配置
           splitLine: {
             lineStyle: {
               color: '#57617B'
             }
           }
         }],
+        // smooth:false,   //关键点，为true是不支持虚线的，实线就用true
+        // 是否是阶梯线图。可以设置为 true 显示成阶梯线图，也支持设置成 'start', 'middle', 'end' 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
         series: [{
           name: 'CMCC',
           type: 'line',
-          smooth: true,
+          smooth: false,
+          step: true,
           symbol: 'circle',
           symbolSize: 5,
           showSymbol: false,
@@ -130,53 +136,53 @@ export default {
               width: 1
             }
           },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(137, 189, 27, 0.3)'
-              }, {
-                offset: 0.8,
-                color: 'rgba(137, 189, 27, 0)'
-              }], false),
-              shadowColor: 'rgba(0, 0, 0, 0.1)',
-              shadowBlur: 10
-            }
-          },
+          // areaStyle: {
+          //   normal: {
+          //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          //       offset: 0,
+          //       color: 'rgba(137, 189, 27, 0.3)'
+          //     }, {
+          //       offset: 0.8,
+          //       color: 'rgba(137, 189, 27, 0)'
+          //     }], false),
+          //     shadowColor: 'rgba(0, 0, 0, 0.1)',
+          //     shadowBlur: 10
+          //   }
+          // },
           itemStyle: {
             normal: {
               color: 'rgb(137,189,27)',
               borderColor: 'rgba(137,189,2,0.27)',
               borderWidth: 12
-
             }
           },
           data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
         }, {
           name: 'CTCC',
           type: 'line',
-          smooth: true,
+          smooth: false,
           symbol: 'circle',
+          //  step: true,
           symbolSize: 5,
-          showSymbol: false,
+          // showSymbol: false,
           lineStyle: {
             normal: {
               width: 1
             }
           },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(0, 136, 212, 0.3)'
-              }, {
-                offset: 0.8,
-                color: 'rgba(0, 136, 212, 0)'
-              }], false),
-              shadowColor: 'rgba(0, 0, 0, 0.1)',
-              shadowBlur: 10
-            }
-          },
+          // areaStyle: {
+          //   normal: {
+          //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          //       offset: 0,
+          //       color: 'rgba(0, 136, 212, 0.3)'
+          //     }, {
+          //       offset: 0.8,
+          //       color: 'rgba(0, 136, 212, 0)'
+          //     }], false),
+          //     shadowColor: 'rgba(0, 0, 0, 0.1)',
+          //     shadowBlur: 10
+          //   }
+          // },
           itemStyle: {
             normal: {
               color: 'rgb(0,136,212)',
@@ -189,8 +195,9 @@ export default {
         }, {
           name: 'CUCC',
           type: 'line',
-          smooth: true,
+          smooth: false,
           symbol: 'circle',
+          step: 'start',
           symbolSize: 5,
           showSymbol: false,
           lineStyle: {
@@ -198,19 +205,19 @@ export default {
               width: 1
             }
           },
-          areaStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                offset: 0,
-                color: 'rgba(219, 50, 51, 0.3)'
-              }, {
-                offset: 0.8,
-                color: 'rgba(219, 50, 51, 0)'
-              }], false),
-              shadowColor: 'rgba(0, 0, 0, 0.1)',
-              shadowBlur: 10
-            }
-          },
+          // areaStyle: {
+          //   normal: {
+          //     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+          //       offset: 0,
+          //       color: 'rgba(219, 50, 51, 0.3)'
+          //     }, {
+          //       offset: 0.8,
+          //       color: 'rgba(219, 50, 51, 0)'
+          //     }], false),
+          //     shadowColor: 'rgba(0, 0, 0, 0.1)',
+          //     shadowBlur: 10
+          //   }
+          // },
           itemStyle: {
             normal: {
               color: 'rgb(219,50,51)',

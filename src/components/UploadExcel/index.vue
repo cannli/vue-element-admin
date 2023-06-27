@@ -31,6 +31,8 @@ export default {
     generateData({ header, results }) {
       this.excelData.header = header
       this.excelData.results = results
+      console.log(header, 'header')
+      console.log(results, 'results')
       this.onSuccess && this.onSuccess(this.excelData)
     },
     handleDrop(e) {
